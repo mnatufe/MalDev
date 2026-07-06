@@ -3,8 +3,8 @@
 
 int main(){
     char shellCode[] = {
-        "SHELL CODE"
-        "SHELL CODE"
+        "SHELL,CODE"
+        "SHELL,CODE"
     };
     int shellCode_size = siceof(shellCode);
     void *execMemm; //Pointer to allocated shellcode memory address
