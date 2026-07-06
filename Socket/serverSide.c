@@ -6,7 +6,7 @@
 int main(){
     int serverSocket; //Creating socket
     int clientSocket; //Accepts connection
-    int listeningPort;
+    int listeningPort = 9001;
     char ipAddr[] = "255.255.255.255"; 
     struct sockAddr_in serverAddr; //Structure required by bind()
     char TXbuffer[500]; //Holds TX messages
@@ -32,5 +32,6 @@ int main(){
     return 0;
 
 
-/* Compile and run on server, 
- spawn netcat listening terminal with same listening port */
+/* Change listening port and IP to desired
+Compile and run on server, 
+spawn netcat listening terminal with same listening port */
