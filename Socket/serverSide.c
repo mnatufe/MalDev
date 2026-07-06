@@ -6,16 +6,18 @@
 int main(){
     int serverSocket; //Creating socket
     int clientSocket; //Accepts connection
+    int listeningPort;
+    char ipAddr[] = "255.255.255.255"; 
     struct sockAddr_in serverAddr; //Structure required by bind()
-    char TXbuffer[500] = "hell from server"; //Holds TX messages
+    char TXbuffer[500]; //Holds TX messages
     char RXbuffer[500]; //Holds RX messages
     
     serverSocket = socket(AF_INET, SOCK_STREAM, 0); //creates TCP socket
     //socket args: Specify IPv4, Specified TCP socket, 0. [socket family, type, protocol]
     
     serverAddr.sin_family = AF_INET; //Specifies IPv4
-    serverAddr.sin_port = htons(9001); //network listening port
-    serverAddr.sin_addr.s_addr = inet_addr("IP_ADDRESS"); //server address
+    serverAddr.sin_port = htons(listeningPort); //network listening port
+    serverAddr.sin_addr.s_addr = inet_addr(ipAddr); //server address
     
     bind(serverSocket, (struct serverAddr*) &serverAddr, sizeof(serverAddr)); //Bind server
     //bind args: socket, required struct address, size in bytes of struct
@@ -28,3 +30,7 @@ int main(){
     printf("From Client: %s", RXbuffer);
     close(serverSocket);
     return 0;
+
+
+/* Compile and run on server, 
+ spawn netcat listening terminal with same listening port */
